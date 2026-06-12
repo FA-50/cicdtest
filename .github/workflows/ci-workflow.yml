@@ -1,0 +1,26 @@
+name: ci-workflow.yml
+on: # on: pull_request라는 이벤트가 발생했을때,
+  pull_request:
+    branches: # pr을 감지할 브랜치를 설정
+      - dev
+      - main # dev 또는 main으로 PR 발생하는 경우
+jobs:
+  code-test: # job 하나
+    name: 코드 테스트 # job 식별자
+    runs-on: ubuntu-latest # job이 실행될 Github 내 컴퓨터 환경
+    steps:
+      - name: 브랜치의 소스코드의 체크아웃 수행
+        uses: actions/checkout@v6 # Github Actions Hook 지정
+        #
+      - name: JDK설치
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '25'
+        run:
+          java
+      - name: gradlew 권한 설정
+        run: chmod +x ./gradlew
+        #
+      - name: 테스트 실행
+        run: ./gradelw test --no-daemon
