@@ -9,4 +9,9 @@ public class hihi {
     public String sayHello(){
         return "Hello.";
     }
+
+    @GetMapping("bye")
+    public String sayBye(){
+        return "Bye";
+    }
 }
