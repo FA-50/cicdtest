@@ -17,10 +17,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '25'
-        run:
-          java
       - name: gradlew 권한 설정
         run: chmod +x ./gradlew
         #
       - name: 테스트 실행
-        run: ./gradelw test --no-daemon
+        run: ./gradlew test --no-daemon
